@@ -1,0 +1,41 @@
+* Crear un nuevo proyecto
+1.-Guit Bash Here
+2.- django-admin.py startproject mysite
+3.-ejecutar comando   python manage.py migrate
+4.- Se configura el url.py de la carpeta mysite / para colocar la ruta de llamada
+5.python manage.py startapp comercio (Se crea la carpeta Comercio)
+6.-Agregar eso en el url.py mysite   ***from django.urls import path, include
+7.- En Settings.py colocar ***INSTALLED_APPS ///    ('comercio')
+8.- llamar en la url.py mysite *** path('comercio/', include('comercio.urls')),
+9.- Configurar la crear la url.py/comercio
+                from django.urls import path
+                from .views import getcomercio
+
+                urlpatterns=[
+                    path('getcomercio', getcomercio,name='getcomercio'),
+                ]
+
+*******************                
+ 10.- configurar la views.py /comercio
+                from django.shortcuts import render
+                from django.http import HttpResponse, JsonResponse
+
+                # Create your views here.
+
+                def getcomercio(request):
+                    data={
+                        'info':'abscdferg'
+                    }
+                    return JsonResponse(data) 
+
+
+
+pip install django==2.0.4
+
+pip install ngram
+pip install beautifulsoup4
+pip install django==2.0.4   
+pip freeze  
+python manage.py runserver          
+
+https://carlosvin.github.io/es/posts/delete-html-tags-py-django/     

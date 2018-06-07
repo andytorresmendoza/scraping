@@ -1,0 +1,55 @@
+from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+import bs4 as bs
+import urllib.request
+
+# Create your views here.
+sauce = urllib.request.urlopen('http://archivo.elcomercio.pe/noticias/marina-guerra-peru-51667').read()
+soup = bs.BeautifulSoup(sauce,'lxml')
+
+#c = ''
+#t = ''
+#Buscar
+#for url in soup.find_all('a'):
+   # c = c + url.get('href')
+   # c += '[' + url.get('href')+']' 
+
+
+def getcomercio(request):
+    data={
+      'Titulo' : soup.prettify()
+       #'url' : c
+    }
+    return JsonResponse(data)
+
+
+
+
+    from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+import bs4 as bs
+import urllib.request
+
+# Create your views here.
+sauce = urllib.request.urlopen('http://archivo.elcomercio.pe/noticias/marina-guerra-peru-51667').read()
+soup = bs.BeautifulSoup(sauce,'lxml')
+
+#c = ''
+#t = ''
+#Buscar
+#for  url in soup.find_all('a'):
+   # c = c + url.get('href')
+ #   c += '[' + url.get('href')+']' 
+
+
+
+def getcomercio(request):
+    data={
+      'Titulo' : soup.title.string,
+       'url' : soup.prettify(),
+       'Edad' : '18'
+    }
+    return JsonResponse(data)
+
+
+
