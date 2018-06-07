@@ -9,32 +9,37 @@ from django.utils.html import strip_tags
 sauce = urllib.request.urlopen('https://pythonprogramming.net/parsememcparseface/').read()
 soup = bs.BeautifulSoup(sauce,'lxml')
 
-#c = ''
 textohtml= ''
 strip = ''
-#t = ''
-#Buscar
-#for  url in soup.find_all('a'):
+variable = []
 
- #  c += '[' + url.get('href')+']' 
 textohtml = soup.prettify()
-
 
 
 def getcomercio(request):
     data={
       'Titulo' : soup.title.string,
-       #'HTML' : strip_tags(textohtml)
-     'HTML' : strip_tags([i for i in zip(listap, frecuenciaPalab)])
-    # 'URL' : c
+      #'HTML' : strip_tags(listap)
+      'HTML' : variable
+    
     }
     return JsonResponse(data)
 
 strip = strip_tags(textohtml) 
-listap = strip.split() 
+listap = strip.split()
 
 frecuenciaPalab = []
 for w in listap:
     frecuenciaPalab.append(listap.count(w))
+variable = ([i for i in zip(listap, frecuenciaPalab)])
+
+var = listap.count('Python')
+if var > 0:
+    print (var,'Coincidencias')
+
+else:
+    print ("Ninguna Coincidencias")
+
+
 
 
