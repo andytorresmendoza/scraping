@@ -12,26 +12,20 @@ soup = bs.BeautifulSoup(sauce,'lxml')
 #c = ''
 textohtml= ''
 strip = ''
-#t = ''
-#Buscar
-#for  url in soup.find_all('a'):
-
- #  c += '[' + url.get('href')+']' 
 textohtml = soup.prettify()
 
 
 def getcomercio(request):
     data={
       'Titulo' : soup.title.string,
-       'HTML' : strip_tags(textohtml)
-    #   'URL' : c
+      'HTML' : strip_tags(listap)
+
     }
     return JsonResponse(data)
 
 strip = strip_tags(textohtml) 
 listap = strip.split()
-#mensaje9 = listap
-#mensaje9a = mensaje9[1:5000]
+
 #print(listap)  
 frecuenciaPalab = []
 for w in listap:
@@ -43,4 +37,4 @@ for w in listap:
 #print("Pares\n" + str(zip(listap, frecuenciaPalab)))
 print([i for i in zip(listap, frecuenciaPalab)])
 
-#print(d['Community'])
+
